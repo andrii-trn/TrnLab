@@ -3,11 +3,134 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lab 1</title>
+  <title>Лабораторна робота №1 — Варіант 3</title>
 </head>
 <body>
-  <h1>Hello!</h1>
-  <p>My first GitHub Pages page</p>
+  <h1>Лабораторна робота №1</h1>
+  <h2>Основи побудови та публікації HTML-документів</h2>
+  <p><strong>Варіант:</strong> 3</p>
+
+  <hr />
+
+  <!-- 1) Оформлений текст -->
+  <h3>1) Оформлений фрагмент тексту</h3>
+  <p>
+    <strong>E = mc<sup>2</sup></strong>, where <em>E</em> — energy of the object,
+    <em>m</em> — it's mass, <em>c</em> — speed of light in vacuum,
+    equals to <u>299 792 458</u> m/s.
+  </p>
+  <p>
+    Додатково (для демонстрації спецсимволів): &alpha;, &beta;, &gamma;, &rarr;, &uarr;,
+    знак “менше” записується як <code>&amp;lt;</code>, “більше” — <code>&amp;gt;</code>.
+  </p>
+
+  <hr />
+
+  <!-- 2) Випадаючий список студентів -->
+  <h3>2) Випадаючий список студентів групи</h3>
+  <label for="students">Обери студента (бригада 1):</label>
+  <select id="students" name="students">
+    <option value="all">— Обрати —</option>
+    <option value="tiron_andrii">Тірон Андрій</option>
+    <option value="student_2">Студент 2</option>
+    <option value="student_3">Студент 3</option>
+    <option value="student_4">Студент 4</option>
+  </select>
+
+  <hr />
+
+  <!-- 3) Таблиця: зміст книги -->
+  <h3>3) Таблиця: зміст довільної книги</h3>
+  <table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Розділ</th>
+        <th>Сторінка</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Вступ</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Розділ 1. Основи HTML</td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td>Розділ 2. Посилання та зображення</td>
+        <td>23</td>
+      </tr>
+      <tr>
+        <td>Розділ 3. Таблиці та форми</td>
+        <td>41</td>
+      </tr>
+      <tr>
+        <td>Висновки</td>
+        <td>58</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr />
+
+  <!-- 4) Форма для введення інформації про студента -->
+  <h3>4) Форма для введення інформації про студента</h3>
+  <form action="#" method="post">
+    <p>
+      <label for="fullName">ПІБ:</label><br />
+      <input id="fullName" name="fullName" type="text" placeholder="Напр.: Тірон Андрій" required />
+    </p>
+
+    <p>
+      <label for="group">Група:</label><br />
+      <input id="group" name="group" type="text" placeholder="КІУКІу-24-1" required />
+    </p>
+
+    <p>
+      <label for="email">Email:</label><br />
+      <input id="email" name="email" type="email" placeholder="name@example.com" required />
+    </p>
+
+    <p>
+      <label for="birth">Дата народження:</label><br />
+      <input id="birth" name="birth" type="date" />
+    </p>
+
+    <p>
+      <label>Стать:</label><br />
+      <input id="gender_m" name="gender" type="radio" value="male" />
+      <label for="gender_m">Чоловіча</label>
+      <input id="gender_f" name="gender" type="radio" value="female" />
+      <label for="gender_f">Жіноча</label>
+    </p>
+
+    <p>
+      <label for="comment">Коментар:</label><br />
+      <textarea id="comment" name="comment" rows="4" cols="40" placeholder="Додаткова інформація..."></textarea>
+    </p>
+
+    <p>
+      <input id="agree" name="agree" type="checkbox" required />
+      <label for="agree">Підтверджую правильність даних</label>
+    </p>
+
+    <p>
+      <button type="submit">Надіслати</button>
+      <button type="reset">Очистити</button>
+    </p>
+  </form>
+
+  <hr />
+
+  <!-- 5) Відносне посилання на розділ іншої сторінки -->
+  <h3>5) Відносне гіперпосилання на розділ іншої сторінки</h3>
+  <p>
+    Перейти до необхідного розділу на іншій сторінці:
+    <a href="book.html#required-section">book.html → “Необхідний розділ”</a>
+  </p>
+
+  <hr />
+  <p><small>© ЛР №1, Варіант 3</small></p>
 </body>
 </html>
-
