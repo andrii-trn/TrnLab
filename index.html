@@ -12,7 +12,7 @@
 
   <hr />
 
-  <h3>1) Оформлений фрагмент тексту</h3>
+  <h3>1. Оформлений фрагмент тексту</h3>
   <p>
     <strong><em>E = mc<sup>2</sup></em></strong>, where <strong>E</strong> - energy of the object,
     <strong>m</strong> - it's mass, <strong>c</strong> - speed of light in vacuum,
@@ -21,11 +21,10 @@
 
   <hr />
 
-  <h3>2) Випадаючий список студентів групи</h3>
+  <h3>2. Випадаючий список студентів групи</h3>
   <label for="students">Обери студента КІУКІу-24-1:</label>
   <select id="students" name="students">
-    <option value="all">Натисніть щоб обрати...>
-    <option value="tiron_andrii">Тірон Андрій</option>
+    <option value="all">Натисніть щоб обрати...
     <option value="student_1">Андрієнко М.А.</option>
     <option value="student_2">Баришев Я.Д.</option>
     <option value="student_3">Глітко Б.О.</option>
@@ -48,54 +47,55 @@
 
   <hr />
 
-  <h3>3) Таблиця. Зміст книги "This is service design thinking"</h3>
+  <h3>3. Таблиця. Зміст книги "This is service design thinking"</h3>
   <table border="1" cellpadding="8" cellspacing="0">
-    <thead>
-      <tr>
-        <th>Розділ</th>
-        <th>Сторінка</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Introduction</td>
-        <td>12</td>
-      </tr>
-      <tr>
-        <td>What is service design?</td>
-        <td>28</td>
-      </tr>
-      <tr>
-        <td>Who are these service designers?</td>
-        <td>54</td>
-      </tr>
-      <tr>
-        <td>How does service design work?</td>
-        <td>120</td>
-      </tr>
-      <tr>
-        <td>What are the tools of service design?</td>
-        <td>146</td>
-      </tr>
-        <tr>
-        <td>Applied service design</td>
-        <td>218</td>
-      </tr>
-        <tr>
-        <td>Deep service design thinking</td>
-        <td>298</td>
-      </tr>
-        <tr>
-        <td>Appendix</td>
-        <td>340</td>
-      </tr>
-    </tbody>
-  </table>
+  <tr>
+    <th align="left">Розділ</th>
+    <th align="right">Сторінка</th>
+  </tr>
+  <tr>
+    <td align="left">Introduction</td>
+    <td align="right">12</td>
+  </tr>
+  <tr>
+    <td align="left">What is service design?</td>
+    <td align="right">28</td>
+  </tr>
+  <tr>
+    <td align="left">Who are these service designers?</td>
+    <td align="right">54</td>
+  </tr>
+  <tr>
+    <td align="left">How does service design work?</td>
+    <td align="right">120</td>
+  </tr>
+  <tr>
+    <td align="left">What are the tools of service design?</td>
+    <td align="right">146</td>
+  </tr>
+  <tr>
+    <td align="left">Applied service design</td>
+    <td align="right">218</td>
+  </tr>
+  <tr>
+    <td align="left">Deep service design thinking</td>
+    <td align="right">298</td>
+  </tr>
+  <tr>
+    <td align="left">Appendix</td>
+    <td align="right">340</td>
+  </tr>
+</table>
+
 
   <hr />
 
-  <h3>4) Форма для введення інформації про студента</h3>
-  <form action="#" method="post">
+  <h3>4. Форма для введення інформації про студента</h3>
+  <form action="#success" method="get">
+    <p id="success" style="display:none; border:1px solid green; padding:10px; margin-top:10px;">
+  Дані успішно надіслані!
+</p>
+
     <p>
       <label for="fullName">ПІБ:</label><br />
       <input id="fullName" name="fullName" type="text" placeholder="напр. Тірон А.Р." required />
@@ -135,20 +135,21 @@
     </p>
 
     <p>
-      <button type="submit">Надіслати</button>
+      <button type="submit" onclick="document.getElementById('success').style.display='block'; return false;">
+      Надіслати
       <button type="reset">Очистити</button>
     </p>
   </form>
 
   <hr />
 
-  <h3>5) Відносне гіперпосилання на розділ іншої сторінки</h3>
+  <h3>5. Відносне гіперпосилання на розділ іншої сторінки</h3>
   <p>
     Перейти до необхідного розділу на іншій сторінці:
     <a href="book.html#required-section">“Необхідний розділ”</a>
   </p>
 
   <hr />
-  <p><small>ЛР №1, Варіант 3</small></p>
+  <p><small>ЛР №1, Варіант 3. Тірон А.Р.</small></p>
 </body>
 </html>
