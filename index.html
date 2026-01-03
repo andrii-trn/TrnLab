@@ -12,35 +12,43 @@
 
   <hr />
 
-  <!-- 1) Оформлений текст -->
   <h3>1) Оформлений фрагмент тексту</h3>
   <p>
-    <strong>E = mc<sup>2</sup></strong>, where <em>E</em> — energy of the object,
-    <em>m</em> — it's mass, <em>c</em> — speed of light in vacuum,
-    equals to <u>299 792 458</u> m/s.
-  </p>
-  <p>
-    Додатково (для демонстрації спецсимволів): &alpha;, &beta;, &gamma;, &rarr;, &uarr;,
-    знак “менше” записується як <code>&amp;lt;</code>, “більше” — <code>&amp;gt;</code>.
+    <strong><em>E = mc<sup>2</sup></em></strong>, where <strong>E</strong> - energy of the object,
+    <strong>m</strong> - it's mass, <strong>c</strong> - speed of light in vacuum,
+    equals to 299 792 458<em>m/s</em>
   </p>
 
   <hr />
 
-  <!-- 2) Випадаючий список студентів -->
   <h3>2) Випадаючий список студентів групи</h3>
-  <label for="students">Обери студента (бригада 1):</label>
+  <label for="students">Обери студента КІУКІу-24-1:</label>
   <select id="students" name="students">
-    <option value="all">— Обрати —</option>
+    <option value="all">Натисніть щоб обрати...>
     <option value="tiron_andrii">Тірон Андрій</option>
-    <option value="student_2">Студент 2</option>
-    <option value="student_3">Студент 3</option>
-    <option value="student_4">Студент 4</option>
+    <option value="student_1">Андрієнко М.А.</option>
+    <option value="student_2">Баришев Я.Д.</option>
+    <option value="student_3">Глітко Б.О.</option>
+    <option value="student_4">Глітко Б.О.</option>
+    <option value="student_5">Коваленко Д.І.</option>
+    <option value="student_6">Коломієць М.Г.</option>
+    <option value="student_7">Константінов В.С.</option>
+    <option value="student_8">Кривенко Н.С.</option>
+    <option value="student_9">Невдачин М.М.</option>
+    <option value="student_10">Підгорний Б.Є.</option>
+    <option value="student_11">Погорілий А.О.</option>
+    <option value="student_12">Прохоров М.С.</option>
+    <option value="student_13">Рогова Є.А.</option>
+    <option value="student_14">Савченко Б.І.</option>
+    <option value="student_15">Соловйова Е.С.</option>
+    <option value="student_16">Сподін М.Р.</option>
+    <option value="student_17">Стовба Д.А.</option>
+    <option value="student_18">Тірон А.Р.</option>
   </select>
 
   <hr />
 
-  <!-- 3) Таблиця: зміст книги -->
-  <h3>3) Таблиця: зміст довільної книги</h3>
+  <h3>3) Таблиця. Зміст книги "This is service design thinking"</h3>
   <table border="1" cellpadding="8" cellspacing="0">
     <thead>
       <tr>
@@ -50,46 +58,57 @@
     </thead>
     <tbody>
       <tr>
-        <td>Вступ</td>
-        <td>1</td>
+        <td>Introduction</td>
+        <td>12</td>
       </tr>
       <tr>
-        <td>Розділ 1. Основи HTML</td>
-        <td>7</td>
+        <td>What is service design?</td>
+        <td>28</td>
       </tr>
       <tr>
-        <td>Розділ 2. Посилання та зображення</td>
-        <td>23</td>
+        <td>Who are these service designers?</td>
+        <td>54</td>
       </tr>
       <tr>
-        <td>Розділ 3. Таблиці та форми</td>
-        <td>41</td>
+        <td>How does service design work?</td>
+        <td>120</td>
       </tr>
       <tr>
-        <td>Висновки</td>
-        <td>58</td>
+        <td>What are the tools of service design?</td>
+        <td>146</td>
+      </tr>
+        <tr>
+        <td>Applied service design</td>
+        <td>218</td>
+      </tr>
+        <tr>
+        <td>Deep service design thinking</td>
+        <td>298</td>
+      </tr>
+        <tr>
+        <td>Appendix</td>
+        <td>340</td>
       </tr>
     </tbody>
   </table>
 
   <hr />
 
-  <!-- 4) Форма для введення інформації про студента -->
   <h3>4) Форма для введення інформації про студента</h3>
   <form action="#" method="post">
     <p>
       <label for="fullName">ПІБ:</label><br />
-      <input id="fullName" name="fullName" type="text" placeholder="Напр.: Тірон Андрій" required />
+      <input id="fullName" name="fullName" type="text" placeholder="напр. Тірон А.Р." required />
     </p>
 
     <p>
       <label for="group">Група:</label><br />
-      <input id="group" name="group" type="text" placeholder="КІУКІу-24-1" required />
+      <input id="group" name="group" type="text" placeholder="напр. КІУКІу-24-1" required />
     </p>
 
     <p>
       <label for="email">Email:</label><br />
-      <input id="email" name="email" type="email" placeholder="name@example.com" required />
+      <input id="email" name="email" type="email" placeholder="name@mail.com" required />
     </p>
 
     <p>
@@ -107,7 +126,7 @@
 
     <p>
       <label for="comment">Коментар:</label><br />
-      <textarea id="comment" name="comment" rows="4" cols="40" placeholder="Додаткова інформація..."></textarea>
+      <textarea id="comment" name="comment" rows="4" cols="40" placeholder="Введіть свій коментар..."></textarea>
     </p>
 
     <p>
@@ -123,14 +142,13 @@
 
   <hr />
 
-  <!-- 5) Відносне посилання на розділ іншої сторінки -->
   <h3>5) Відносне гіперпосилання на розділ іншої сторінки</h3>
   <p>
     Перейти до необхідного розділу на іншій сторінці:
-    <a href="book.html#required-section">book.html → “Необхідний розділ”</a>
+    <a href="book.html#required-section">“Необхідний розділ”</a>
   </p>
 
   <hr />
-  <p><small>© ЛР №1, Варіант 3</small></p>
+  <p><small>ЛР №1, Варіант 3</small></p>
 </body>
 </html>
