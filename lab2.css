@@ -1,19 +1,14 @@
-/* 1) Приклад стилів через зовнішній CSS-файл (цей файл) */
-
-/* Загальні стилі */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #F1F5F9;
 }
 
-/* Layout */
 .layout {
   display: flex;
   min-height: 100vh;
 }
 
-/* Sidebar */
 .sidebar {
   width: 220px;
   background: #F8FAFC;
@@ -32,37 +27,31 @@ body {
   color: #111;
 }
 
-/* Hover */
 .link:hover {
   background: #45556C;
   color: #ffffff;
 }
 
-/* 2) Контент */
 .content {
   flex: 1;
   padding: 24px;
 }
 
-/* Панелі */
 .panel {
-  display: none;              /* ховаємо всі */
+  display: none;
   background: #E2E8F0;
   border: 1px solid #90A1B9;
   padding: 16px;
 }
 
-/* Показуємо тільки активну секцію по #hash */
 .panel:target {
   display: block;
 }
 
-/* Якщо НЕМАЄ #hash — показуємо Inline */
 .content:not(:has(.panel:target)) #inline {
   display: block;
 }
 
-/* Float demo */
 .float-img {
   float: left;
   margin: 0 12px 10px 0;
@@ -73,9 +62,8 @@ body {
   clear: both;
 }
 
-/* Position demo */
 .badge-parent {
-  position: relative;         /* база для absolute */
+  position: relative;
 }
 
 .badge {
@@ -88,7 +76,6 @@ body {
   font-size: 12px;
 }
 
-/* Animation demo */
 .jump-btn {
   padding: 6px 12px;
   border: 1px solid #314158;
