@@ -1,65 +1,87 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <title>Лабораторна робота №2</title>
-
-  <link rel="stylesheet" href="lab2.css">
-
-  <style>
-    h1 {
-      text-align: center;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <title>ЛР2 — CSS (варіант 8)</title>
+  <link rel="stylesheet" href="lab2.css" />
 </head>
+
 <body>
+  <div class="layout">
 
-<h1>Лабораторна робота №2</h1>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <ul class="menu">
+        <li><a class="link link-inline" href="#inline">Inline-стиль</a></li>
+        <li><a class="link link-float" href="#float">Float (обтікання)</a></li>
+        <li><a class="link link-position" href="#position">Position</a></li>
+        <li><a class="link link-anim" href="#anim">Анімація</a></li>
+      </ul>
+    </nav>
 
-<div class="layout">
+    <!-- Content -->
+    <main class="content">
 
-  <nav class="sidebar">
-    <ul>
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#news">News</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-  </nav>
+      <!-- Inline -->
+      <section id="inline" class="panel">
+        <h2>Inline-стиль</h2>
 
-  <main class="content">
+        <p>
+          Нижче приклад <b>inline-стилю</b> — стиль заданий прямо в елементі через атрибут <code>style</code>:
+        </p>
 
-    <section id="home">
-      <h2>Home</h2>
-      <p style="border-left:4px solid green; padding-left:8px;">
-        Це приклад <b>inline-стилю</b>.
-      </p>
-    </section>
+        <p style="border-left:4px solid #2e7d32; padding-left:10px; font-weight:bold;">
+          Це абзац оформлено inline-стилем (style="...").
+        </p>
+      </section>
 
-    <section id="news">
-      <h2>News</h2>
-      <img src="https://via.placeholder.com/120"
-           alt="demo"
-           class="float-img">
-      <p>
-        Цей текст обтікає зображення завдяки <code>float: left</code>.
-      </p>
-    </section>
+      <!-- Float -->
+      <section id="float" class="panel">
+        <h2>Float (обтікання)</h2>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="badge">POSITION</div>
-      <p>Приклад абсолютного позиціювання.</p>
-    </section>
+        <img class="float-img" src="https://via.placeholder.com/120x90" alt="demo" />
 
-    <section id="about">
-      <h2>About</h2>
-      <p>Тут демонструємо селектори та анімацію.</p>
-      <button class="jump">Button</button>
-    </section>
+        <p>
+          Це приклад властивості <code>float: left</code>.
+          Зображення “плаває” ліворуч, а текст обтікає його справа.
+        </p>
 
-  </main>
-</div>
+        <p>
+          Додатковий текст, щоб було видно обтікання: CSS дозволяє змінювати вигляд елементів сторінки
+          без зміни HTML-структури.
+        </p>
 
+        <div class="clear"></div>
+      </section>
+
+      <!-- Position -->
+      <section id="position" class="panel badge-parent">
+        <h2>Position</h2>
+
+        <div class="badge">ABS</div>
+
+        <p>
+          Приклад <code>position: absolute</code>.
+          Бейдж <b>ABS</b> закріплений у правому верхньому куті блоку.
+        </p>
+
+        <p>
+          Сам блок має <code>position: relative</code>, щоб абсолютне позиціювання працювало відносно нього.
+        </p>
+      </section>
+
+      <!-- Animation -->
+      <section id="anim" class="panel">
+        <h2>Анімація</h2>
+
+        <p>
+          Кнопка нижче “стрибає” за допомогою CSS-анімації (<code>@keyframes</code>).
+        </p>
+
+        <button class="jump-btn" type="button">Button</button>
+      </section>
+
+    </main>
+  </div>
 </body>
 </html>
