@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Лабораторна робота №2 - Каскадні таблиці стилів (Варіант 8)</title>
+
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+    h1 { margin: 0 0 8px; }
+
+    #page-title { letter-spacing: 0.5px; }
+
+    a[title] { text-decoration-thickness: 2px; }
+
+    .note strong { text-transform: uppercase; }
+  </style>
+
+  <link rel="stylesheet" href="lab2.css">
+</head>
+
+<body>
+  <header class="header">
+    <h1 id="page-title">Лабораторна робота №2</h1>
+    <p class="subtitle">Каскадні таблиці стилів. Варіант 8.</p>
+  </header>
+
+  <main class="layout">
+    <nav class="sidebar">
+      <h2 class="sidebar__title">Навігація</h2>
+
+      <ul class="menu">
+        <li class="menu__item menu__item--active"><a class="menu__link" href="#home">Home</a></li>
+        <li class="menu__item"><a class="menu__link" href="#news">News</a></li>
+        <li class="menu__item"><a class="menu__link" href="#contact">Contact</a></li>
+        <li class="menu__item"><a class="menu__link" href="#about">About</a></li>
+      </ul>
+
+      <p class="note">
+        Наведи курсор на пункт меню — має мінятися фон (hover).<br>
+        Поточний пункт (Home) має інший фон.
+      </p>
+    </nav>
+
+    <section class="content">
+      <article class="card" id="home">
+        <h2>Home</h2>
+        <p>Тут демонструємо використання селекторів, позиціонування та float.</p>
+
+        <p style="border-left: 4px solid #2f7a2f; padding-left: 10px;">
+          Це приклад <strong>inline-стилю</strong> (style="" прямо в елементі).
+        </p>
+      </article>
+
+      <article class="card" id="news">
+        <h2>News</h2>
+
+        <img class="float-img" src="https://via.placeholder.com/140x90" alt="demo" />
+        <p>
+          Цей абзац обтікає зображення завдяки <code>float: left</code>.
+          Це вимога ЛР: продемонструвати float.
+        </p>
+        <div class="clearfix"></div>
+      </article>
+
+      <article class="card" id="contact">
+        <h2>Contact</h2>
+        <p>Приклад позиціонування: нижче буде “бейдж” у кутку картки.</p>
+
+        <span class="badge">POSITION</span>
+      </article>
+
+      <article class="card" id="about">
+        <h2>About</h2>
+        <p class="note">
+          Тут можна коротко описати, що таке CSS, каскад, пріоритет стилів, тощо.
+          <strong>Селектори</strong> використані: по класу, id, атрибуту, псевдоклас hover.
+        </p>
+
+        <button class="jump-btn" type="button" title="Jump button">Button</button>
+        <p class="hint">Кнопка має “стрибати” за допомогою CSS-анімації.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="index.html" title="Повернення">← Повернутися до ЛР №1</a>
+  </footer>
+</body>
+</html>
