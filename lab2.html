@@ -1,163 +1,65 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <title>ЛР №2 — CSS — Варіант 8</title>
+  <meta charset="UTF-8">
+  <title>Лабораторна робота №2</title>
+
+  <link rel="stylesheet" href="lab2.css">
 
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; }
-
-    /* 1) Sidebar */
-    .menu {
-      position: fixed;
-      left: 0; top: 0;
-      width: 200px;
-      height: 100vh;            /* на всю висоту */
-      background: #f2f2f2;
-      border-right: 1px solid #ccc;
-      padding: 10px;
-    }
-
-    .menu a {
-      display: block;
-      padding: 10px;
-      margin-bottom: 5px;
-      text-decoration: none;
-      color: #000;
-      background: #fff;
-      border: 1px solid #ddd;
-    }
-
-    .menu a:hover {             /* hover */
-      background: #ddd;
-    }
-
-    /* 2) Main area */
-    .content {
-      margin-left: 220px;       /* місце під меню */
-      padding: 20px;
-    }
-
-    /* 3) Перемикання секцій без JS */
-    .page { display: none; }
-    #home { display: block; }   /* за замовчуванням Home */
-
-    .page:target { display: block; }
-    .page:target ~ #home { display: none; } /* коли відкрито іншу секцію — сховати home */
-
-    /* 4) Active пункт меню (простий варіант) */
-    /* якщо хеш не заданий — підсвічуємо Home */
-    .menu a.home { background: #4caf50; color: #fff; }
-
-    /* якщо вибрано іншу секцію — прибираємо green з Home і підсвічуємо активний */
-    body:has(#news:target) .menu a.home,
-    body:has(#contact:target) .menu a.home,
-    body:has(#about:target) .menu a.home {
-      background: #fff;
-      color: #000;
-    }
-
-    body:has(#news:target) .menu a.news,
-    body:has(#contact:target) .menu a.contact,
-    body:has(#about:target) .menu a.about {
-      background: #4caf50;
-      color: #fff;
-    }
-
-    /* ===== Демонстрації для ЛР2 ===== */
-
-    /* float demo */
-    .img {
-      float: left;
-      width: 80px;
-      height: 50px;
-      background: #ccc;
-      margin: 0 10px 10px 0;
+    h1 {
       text-align: center;
-      line-height: 50px;
-    }
-    .clear { clear: both; }
-
-    /* position demo */
-    .box {
-      position: relative;
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin-top: 10px;
-    }
-    .label {
-      position: absolute;
-      right: 10px;
-      top: 10px;
-      background: black;
-      color: white;
-      padding: 2px 6px;
-      font-size: 12px;
-    }
-
-    /* animation demo */
-    @keyframes jump {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-      100% { transform: translateY(0); }
-    }
-    .btn {
-      margin-top: 10px;
-      padding: 8px 14px;
-      border: 1px solid #333;
-      background: #fff;
-      cursor: pointer;
-      animation: jump 0.8s infinite;
     }
   </style>
 </head>
-
 <body>
 
-  <div class="menu">
-    <a class="home" href="#home">Home</a>
-    <a class="news" href="#news">News</a>
-    <a class="contact" href="#contact">Contact</a>
-    <a class="about" href="#about">About</a>
-  </div>
+<h1>Лабораторна робота №2</h1>
 
-  <div class="content">
-    <h1>Лабораторна робота №2 (CSS), Варіант 8</h1>
+<div class="layout">
 
-    <div id="news" class="page">
-      <h2>News</h2>
+  <nav class="sidebar">
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
 
-      <div class="img">img</div>
-      <p>
-        Текст обтікає "зображення" завдяки <b>float: left</b>.
-      </p>
-      <div class="clear"></div>
-    </div>
+  <main class="content">
 
-    <div id="contact" class="page">
-      <h2>Contact</h2>
-
-      <div class="box">
-        Це приклад позиціонування (<b>position</b>).
-        <div class="label">POSITION</div>
-      </div>
-    </div>
-
-    <div id="about" class="page">
-      <h2>About</h2>
-
-      <p>
-        Тут можна описати CSS і селектори (class, id, hover).
-      </p>
-
-      <button class="btn" type="button">Button</button>
-    </div>
-
-    <div id="home" class="page">
+    <section id="home">
       <h2>Home</h2>
-      <p>Головна секція (показується за замовчуванням).</p>
-    </div>
-  </div>
+      <p style="border-left:4px solid green; padding-left:8px;">
+        Це приклад <b>inline-стилю</b>.
+      </p>
+    </section>
+
+    <section id="news">
+      <h2>News</h2>
+      <img src="https://via.placeholder.com/120"
+           alt="demo"
+           class="float-img">
+      <p>
+        Цей текст обтікає зображення завдяки <code>float: left</code>.
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="badge">POSITION</div>
+      <p>Приклад абсолютного позиціювання.</p>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>Тут демонструємо селектори та анімацію.</p>
+      <button class="jump">Button</button>
+    </section>
+
+  </main>
+</div>
 
 </body>
 </html>
