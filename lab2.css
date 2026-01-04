@@ -4,7 +4,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f7e3a5;
+  background: #bce9f3;
 }
 
 /* Layout */
@@ -34,8 +34,8 @@ body {
 
 /* Hover */
 .link:hover {
-  background: #444;
-  color: #fff;
+  background: #54bbd2;
+  color: #111;
 }
 
 /* 2) Контент */
@@ -47,8 +47,8 @@ body {
 /* Панелі */
 .panel {
   display: none;              /* Важливо: ховаємо все */
-  background: #f3e7c4;
-  border: 1px solid #d2c6a2;
+  background: #a7ced7;
+  border: 1px solid #739096;
   padding: 16px;
 }
 
