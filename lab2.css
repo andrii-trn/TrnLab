@@ -46,7 +46,7 @@ body {
 
 /* Панелі */
 .panel {
-  display: none;              /* Важливо: ховаємо все */
+  display: none;              /* ховаємо всі */
   background: #E2E8F0;
   border: 1px solid #90A1B9;
   padding: 16px;
@@ -57,14 +57,9 @@ body {
   display: block;
 }
 
-/* 3) Якщо відкрили сторінку без #hash — показати першу секцію */
-.panel#inline {
+/* Якщо НЕМАЄ #hash — показуємо Inline */
+.content:not(:has(.panel:target)) #inline {
   display: block;
-}
-
-/* Але якщо є якийсь :target — ховаємо default inline */
-.panel:target ~ .panel#inline {
-  display: none;
 }
 
 /* Float demo */
