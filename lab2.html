@@ -1,90 +1,322 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Лабораторна робота №2 - Каскадні таблиці стилів (Варіант 8)</title>
+  <title>Лабораторна робота №2 — Варіант 8</title>
 
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; }
-    h1 { margin: 0 0 8px; }
+    /* ===== Base ===== */
+    :root{
+      --bg: #f6f7fb;
+      --panel: #ffffff;
+      --border: #e6e8ef;
+      --text: #1f2430;
+      --muted: #6b7280;
+      --brand: #2563eb;
+      --brand-2: #1d4ed8;
+      --hover: #f3f4f6;
+    }
 
-    #page-title { letter-spacing: 0.5px; }
+    *{ box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
 
-    a[title] { text-decoration-thickness: 2px; }
+    /* ===== Layout ===== */
+    .layout{
+      display:flex;
+      min-height:100vh;
+    }
 
-    .note strong { text-transform: uppercase; }
+    /* ===== Sidebar ===== */
+    .sidebar{
+      position:fixed;
+      left:0; top:0; bottom:0;
+      width:260px;
+      background: var(--panel);
+      border-right: 1px solid var(--border);
+      padding: 18px 12px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .brand{
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fafafa;
+    }
+    .brand h1{
+      margin:0;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+    .brand p{
+      margin:6px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    .nav{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    .nav a{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      text-decoration:none;
+      color: var(--text);
+      border: 1px solid transparent;
+    }
+
+    .nav a:hover{
+      background: var(--hover);
+      border-color: var(--border);
+    }
+
+    /* "іконки" (просто кружечки) */
+    .dot{
+      width:10px; height:10px;
+      border-radius:50%;
+      background: #cbd5e1;
+      flex: 0 0 10px;
+    }
+
+    /* Active через :target (див. правила нижче) */
+    .nav a.active{
+      background: rgba(37, 99, 235, .10);
+      border-color: rgba(37, 99, 235, .25);
+      color: var(--brand-2);
+      font-weight: 700;
+    }
+    .nav a.active .dot{ background: var(--brand); }
+
+    .sidebar-footer{
+      margin-top:auto;
+      padding: 10px 12px;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ===== Main ===== */
+    .main{
+      margin-left:260px;           /* місце під sidebar */
+      width: calc(100% - 260px);
+      padding: 24px;
+    }
+
+    .header{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:16px;
+    }
+
+    .header h2{
+      margin:0;
+      font-size: 22px;
+    }
+    .header p{
+      margin:6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .card{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    }
+
+    /* ===== Sections switching (no JS) ===== */
+    /* За замовчуванням показуємо Home */
+    .page{ display:none; }
+    #home{ display:block; }
+
+    /* Коли в URL є #news / #contact / #about — показуємо відповідне */
+    :target.page{ display:block; }
+    :target.page ~ #home{ display:none; } /* якщо таргет не home, home ховаємо */
+
+    /* Активний пункт меню (через body:has(:target) — працює в сучасних браузерах) */
+    body:has(#news:target)  .nav a[href="#news"],
+    body:has(#contact:target) .nav a[href="#contact"],
+    body:has(#about:target) .nav a[href="#about"],
+    body:not(:has(.page:target)) .nav a[href="#home"],
+    body:has(#home:target) .nav a[href="#home"]{
+      background: rgba(37, 99, 235, .10);
+      border-color: rgba(37, 99, 235, .25);
+      color: var(--brand-2);
+      font-weight: 700;
+    }
+    body:has(#news:target)  .nav a[href="#news"] .dot,
+    body:has(#contact:target) .nav a[href="#contact"] .dot,
+    body:has(#about:target) .nav a[href="#about"] .dot,
+    body:not(:has(.page:target)) .nav a[href="#home"] .dot,
+    body:has(#home:target) .nav a[href="#home"] .dot{
+      background: var(--brand);
+    }
+
+    /* ===== Demo: float + position + animation ===== */
+    .float-img{
+      float:left;
+      margin: 6px 12px 8px 0;
+      width: 60px;
+      height: 40px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, #e5e7eb, #f9fafb);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .clearfix::after{ content:""; display:block; clear:both; }
+
+    .badge{
+      position: relative;
+      padding-right: 80px;
+    }
+    .badge span{
+      position:absolute;
+      top: 12px;
+      right: 12px;
+      background: #111827;
+      color:#fff;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+
+    .jump-btn{
+      display:inline-block;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #fff;
+      cursor:pointer;
+      font-weight: 700;
+    }
+    .jump-btn:hover{ border-color: #cbd5e1; }
+    .jump-btn:active{ transform: translateY(1px); }
+
+    @keyframes jump {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .jump-btn.is-jumping{
+      animation: jump .6s ease-in-out infinite;
+    }
+
+    /* Mobile */
+    @media (max-width: 840px){
+      .sidebar{ width: 220px; }
+      .main{ margin-left:220px; width: calc(100% - 220px); padding: 16px; }
+    }
+    @media (max-width: 680px){
+      .sidebar{
+        position: sticky;
+        width: 100%;
+        height: auto;
+        border-right:none;
+        border-bottom: 1px solid var(--border);
+      }
+      .main{ margin-left:0; width:100%; }
+    }
   </style>
-
-  <link rel="stylesheet" href="lab2.css">
 </head>
 
 <body>
-  <header class="header">
-    <h1 id="page-title">Лабораторна робота №2</h1>
-    <p class="subtitle">Каскадні таблиці стилів. Варіант 8.</p>
-  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>ЛР №2 · CSS · Варіант 8</h1>
+        <p>Fixed sidebar + :target навігація (без JS)</p>
+      </div>
 
-  <main class="layout">
-    <nav class="sidebar">
-      <h2 class="sidebar__title">Навігація</h2>
+      <nav class="nav">
+        <a href="#home"><span class="dot"></span>Home</a>
+        <a href="#news"><span class="dot"></span>News</a>
+        <a href="#contact"><span class="dot"></span>Contact</a>
+        <a href="#about"><span class="dot"></span>About</a>
+      </nav>
 
-      <ul class="menu">
-        <li class="menu__item menu__item--active"><a class="menu__link" href="#home">Home</a></li>
-        <li class="menu__item"><a class="menu__link" href="#news">News</a></li>
-        <li class="menu__item"><a class="menu__link" href="#contact">Contact</a></li>
-        <li class="menu__item"><a class="menu__link" href="#about">About</a></li>
-      </ul>
+      <div class="sidebar-footer">
+        <div>Hover + Active стилі ✅</div>
+        <div>position / float / animation ✅</div>
+      </div>
+    </aside>
 
-      <p class="note">
-        Наведи курсор на пункт меню — має мінятися фон (hover).<br>
-        Поточний пункт (Home) має інший фон.
-      </p>
-    </nav>
+    <main class="main">
+      <div class="header">
+        <div>
+          <h2>Лабораторна робота №2</h2>
+          <p>Навігація як у дашбордах: зліва фіксована, контент перемикається кліком.</p>
+        </div>
+      </div>
 
-    <section class="content">
-      <article class="card" id="home">
-        <h2>Home</h2>
+      <!-- PAGES -->
+      <section id="home" class="page card">
+        <h3>Home</h3>
         <p>Тут демонструємо використання селекторів, позиціонування та float.</p>
-
-        <p style="border-left: 4px solid #2f7a2f; padding-left: 10px;">
-          Це приклад <strong>inline-стилю</strong> (style="" прямо в елементі).
+        <p style="border-left: 4px solid #22c55e; padding-left: 10px;">
+          Це приклад <b>inline-стилю</b> (style="...").
         </p>
-      </article>
+      </section>
 
-      <article class="card" id="news">
-        <h2>News</h2>
-
-        <img class="float-img" src="https://via.placeholder.com/140x90" alt="demo" />
+      <section id="news" class="page card clearfix">
+        <h3>News</h3>
+        <div class="float-img">demo</div>
         <p>
-          Цей абзац обтікає зображення завдяки <code>float: left</code>.
+          Цей абзац обтікає зображення завдяки <b>float: left</b>.
           Це вимога ЛР: продемонструвати float.
         </p>
-        <div class="clearfix"></div>
-      </article>
+        <p style="color: var(--muted); font-size: 13px;">
+          (Після float використали clearfix, щоб блок коректно “закривав” обтікання.)
+        </p>
+      </section>
 
-      <article class="card" id="contact">
-        <h2>Contact</h2>
-        <p>Приклад позиціонування: нижче буде “бейдж” у кутку картки.</p>
+      <section id="contact" class="page card badge">
+        <h3>Contact</h3>
+        <span>POSITION</span>
+        <p>
+          Приклад позиціонування: бейдж у кутку карточки зроблено через
+          <code>position: absolute</code> всередині блоку.
+        </p>
+      </section>
 
-        <span class="badge">POSITION</span>
-      </article>
-
-      <article class="card" id="about">
-        <h2>About</h2>
-        <p class="note">
-          Тут можна коротко описати, що таке CSS, каскад, пріоритет стилів, тощо.
-          <strong>Селектори</strong> використані: по класу, id, атрибуту, псевдоклас hover.
+      <section id="about" class="page card">
+        <h3>About</h3>
+        <p>
+          Тут можна коротко описати, що таке CSS, каскад, пріоритет стилів тощо.
+          <b>СЕЛЕКТОРИ</b>: по класу, id, атрибуту, псевдоклас <code>:hover</code>.
         </p>
 
-        <button class="jump-btn" type="button" title="Jump button">Button</button>
-        <p class="hint">Кнопка має “стрибати” за допомогою CSS-анімації.</p>
-      </article>
-    </section>
-  </main>
+        <button class="jump-btn is-jumping" type="button">Button</button>
+        <p style="margin-top:10px; color: var(--muted); font-size: 13px;">
+          Кнопка “стрибає” за допомогою CSS-анімації.
+        </p>
+      </section>
 
-  <footer class="footer">
-    <a href="index.html" title="Повернення">← Повернутися до ЛР №1</a>
-  </footer>
+      <p style="margin-top:16px;">
+        <a href="index.html">← Повернутися до ЛР №1</a>
+      </p>
+    </main>
+  </div>
 </body>
 </html>
