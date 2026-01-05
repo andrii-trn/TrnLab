@@ -53,5 +53,5 @@
     "background:#111;color:#fff;padding:10px 12px;border-radius:10px;" +
     "font:14px Arial;max-width:280px;box-shadow:0 4px 14px rgba(0,0,0,.25)";
 
-  box.textContent = "Найспекотніший день: " + bestDate + " (TMPMAX: " + bestTemp + "°C)";
+  box.textContent = "Найспекотніший день: " + bestDate + " (Температура: " + bestTemp + "°C)";
 })();
