@@ -1,35 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="utf-8" />
-  <title>Лабораторна робота №3 - Варіант 1</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    .box { border: 1px solid #ccc; padding: 12px; max-width: 800px; }
-    button { padding: 8px 12px; cursor: pointer; }
-    #result { margin-top: 12px; font-weight: bold; }
-    #status { margin-top: 8px; color: #444; }
-  </style>
+    <meta charset="UTF-8">
+    <title>Лабораторна робота №3 - Варіант 1</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .bookmarklet-btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: 2px dashed #0056b3;
+            cursor: move; /* Курсор перетягування */
+        }
+        .step { margin-bottom: 15px; }
+        code { background: #f4f4f4; padding: 2px 5px; border-radius: 3px; }
+    </style>
 </head>
 <body>
-  <h2>Лабораторна робота №3 — Варіант 1</h2>
+    <h1>Інструкція до Варіанту 1 (Букмарклет)</h1>
+    
+    <div class="step">
+        <strong>Крок 1.</strong> Перетягніть цю синю кнопку на панель закладок вашого браузера (під адресним рядком):
+        <br><br>
+        <a class="bookmarklet-btn" href="javascript:(function(){var rows=document.querySelectorAll('table tr');var maxTemp=-Infinity;var hottestDate='';for(var i=1;i<rows.length;i++){var cells=rows[i].cells;if(cells.length>3){var dateText=cells[2].innerText.trim();var tempText=cells[3].innerText.trim();var temp=parseFloat(tempText);if(!isNaN(temp)&&temp>maxTemp){maxTemp=temp;hottestDate=dateText;}}}alert('Найспекотніший день: '+hottestDate+'\nТемпература: '+maxTemp+' °C');})();">
+            🔥 Знайти спеку (Варіант 1)
+        </a>
+    </div>
 
-  <div class="box">
-    <p>
-      Натисни кнопку, щоб знайти <b>найбільш спекотний день</b> (максимальна добова температура TMPMAX)
-      у файлі з даними по Харкову.
-    </p>
+    <div class="step">
+        <strong>Крок 2.</strong> Перейдіть на сторінку з даними:<br>
+        <a href="https://knureigs.github.io/itech/lb/ITech1_JS/ITech1_LabJS_meteo_kh.htm" target="_blank">
+            https://knureigs.github.io/itech/lb/ITech1_JS/ITech1_LabJS_meteo_kh.htm
+        </a>
+    </div>
 
-    <!-- приклад inline-стилю (можеш лишити як демонстрацію) -->
-    <p style="border-left:4px solid #2e7d32; padding-left:10px;">
-      Дані беруться з веб-сторінки та обробляються через DOM/JS.
-    </p>
+    <div class="step">
+        <strong>Крок 3.</strong> Перебуваючи на сторінці з таблицею, натисніть на закладку <strong>"🔥 Знайти спеку"</strong>, яку ви додали в Кроці 1.
+    </div>
 
-    <button id="btn">Знайти найспекотніший день</button>
-    <div id="status"></div>
-    <div id="result"></div>
-  </div>
-
-  <script src="lab3.js"></script>
+    <div class="step">
+        <em>Результат з'явиться у спливаючому вікні.</em>
+    </div>
 </body>
 </html>
