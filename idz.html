@@ -1,0 +1,58 @@
+```html
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bookmarklet: Підсвітити "ВР Лб"</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; padding: 24px; line-height: 1.4; }
+    .card { max-width: 780px; border: 1px solid #ddd; border-radius: 16px; padding: 20px; }
+    .btn {
+      display: inline-block;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid #000;
+      text-decoration: none;
+      font-weight: 700;
+      cursor: grab;
+      user-select: none;
+    }
+    .hint { color: #444; margin-top: 12px; }
+    code { background:#f6f6f6; padding: 2px 6px; border-radius: 6px; }
+    .steps { margin-top: 16px; }
+    .steps li { margin: 6px 0; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Bookmarklet для розкладу (CIST NURE)</h1>
+    <p>
+      Перетягни цю “кнопку” в панель закладок (Bookmarks Bar):
+    </p>
+
+    <a class="btn" href='javascript:(()=>{const ID="cist-vr-lb-style";const CLS="cist-vr-lb-highlight";const rx=/ВР\s*Лб/i;const old=document.getElementById(ID);if(old){old.remove();document.querySelectorAll("td."+CLS+",th."+CLS).forEach(el=>el.classList.remove(CLS));return;}const style=document.createElement("style");style.id=ID;style.textContent=`td.${CLS},th.${CLS}{background:#ffe08a!important;outline:2px solid #ff7a00!important;font-weight:700!important;}td.${CLS} *,th.${CLS} *{font-weight:700!important;}`;document.head.appendChild(style);document.querySelectorAll("td,th").forEach(cell=>{const t=(cell.innerText||"").replace(/\u00A0/g," ").trim();if(rx.test(t))cell.classList.add(CLS);});alert("Готово: підсвічено всі комірки з \\"ВР Лб\\". Повторний клік прибере підсвітку.");})();'>
+      Підсвітити “ВР Лб”
+    </a>
+
+    <p class="hint">
+      Ця кнопка — це bookmarklet. Він підсвічує всі комірки таблиці, де є “ВР Лб”
+      (наприклад <code>*ВР Лб DL</code>). Повторний клік вимикає підсвітку (toggle).
+    </p>
+
+    <ol class="steps">
+      <li>Увімкни панель закладок: <b>View → Always Show Bookmarks Bar</b> (Chrome).</li>
+      <li>Перетягни кнопку <b>“Підсвітити “ВР Лб”</b> у Bookmarks Bar.</li>
+      <li>Відкрий сторінку розкладу CIST.</li>
+      <li>Клікни по закладці — комірки з “ВР Лб” підсвітяться.</li>
+      <li>Клікни ще раз — підсвітка зникне.</li>
+    </ol>
+
+    <p class="hint">
+      Якщо браузер не дає перетягнути: клікни правою кнопкою на Bookmarks Bar → “Add page…”
+      і встав URL вручну (він починається з <code>javascript:</code>).
+    </p>
+  </div>
+</body>
+</html>
+```
