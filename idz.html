@@ -4,54 +4,132 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Bookmarklet: Підсвітити "ВР Лб"</title>
+  <title>Лабораторна робота №3 — Bookmarklet для розкладу</title>
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; padding: 24px; line-height: 1.4; }
-    .card { max-width: 780px; border: 1px solid #ddd; border-radius: 16px; padding: 20px; }
-    .btn {
-      display: inline-block;
-      padding: 12px 16px;
-      border-radius: 12px;
-      border: 1px solid #000;
-      text-decoration: none;
-      font-weight: 700;
-      cursor: grab;
-      user-select: none;
+    :root{
+      --bg:#ffffff;
+      --text:#111;
+      --muted:#5b5b5b;
+      --card:#fff;
+      --border:#e8e8e8;
+      --link:#6b4de6;
+      --btn:#0f0f10;
+      --btnText:#fff;
     }
-    .hint { color: #444; margin-top: 12px; }
-    code { background:#f6f6f6; padding: 2px 6px; border-radius: 6px; }
-    .steps { margin-top: 16px; }
-    .steps li { margin: 6px 0; }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      padding:48px 18px;
+      background:var(--bg);
+      color:var(--text);
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      line-height:1.45;
+    }
+    .wrap{max-width:980px;margin:0 auto;}
+    h1{
+      font-size:48px;
+      letter-spacing:-0.02em;
+      margin:0 0 22px 0;
+      font-weight:800;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:28px;
+      box-shadow:0 1px 0 rgba(0,0,0,0.02);
+    }
+    .card h2{
+      margin:0 0 16px 0;
+      font-size:26px;
+      font-weight:750;
+    }
+    .p{margin:0 0 14px 0;color:var(--text);font-size:18px;}
+    .muted{color:var(--muted)}
+    a{color:var(--link);text-underline-offset:3px;}
+    ol{margin:12px 0 22px 22px;font-size:18px;}
+    li{margin:8px 0;}
+    .btn{
+      display:inline-block;
+      padding:16px 22px;
+      border-radius:16px;
+      background:var(--btn);
+      color:var(--btnText);
+      font-weight:800;
+      text-decoration:none;
+      user-select:none;
+      cursor:grab;
+      box-shadow:0 6px 18px rgba(0,0,0,.12);
+    }
+    .small{
+      margin-top:14px;
+      font-size:14px;
+      color:var(--muted);
+    }
+    code{
+      background:#f5f5f5;
+      border:1px solid #ececec;
+      padding:2px 8px;
+      border-radius:8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size:0.95em;
+    }
+    .row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:14px;}
+    .pill{
+      display:inline-block;
+      border:1px solid #ececec;
+      background:#fafafa;
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:14px;
+      color:#333;
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Bookmarklet для розкладу (CIST NURE)</h1>
-    <p>
-      Перетягни цю “кнопку” в панель закладок (Bookmarks Bar):
-    </p>
+  <div class="wrap">
+    <h1>Лабораторна робота №3</h1>
 
-    <a class="btn" href='javascript:(()=>{const ID="cist-vr-lb-style";const CLS="cist-vr-lb-highlight";const rx=/ВР\s*Лб/i;const old=document.getElementById(ID);if(old){old.remove();document.querySelectorAll("td."+CLS+",th."+CLS).forEach(el=>el.classList.remove(CLS));return;}const style=document.createElement("style");style.id=ID;style.textContent=`td.${CLS},th.${CLS}{background:#ffe08a!important;outline:2px solid #ff7a00!important;font-weight:700!important;}td.${CLS} *,th.${CLS} *{font-weight:700!important;}`;document.head.appendChild(style);document.querySelectorAll("td,th").forEach(cell=>{const t=(cell.innerText||"").replace(/\u00A0/g," ").trim();if(rx.test(t))cell.classList.add(CLS);});alert("Готово: підсвічено всі комірки з \\"ВР Лб\\". Повторний клік прибере підсвітку.");})();'>
-      Підсвітити “ВР Лб”
-    </a>
+    <div class="card">
+      <h2>Варіант: Bookmarklet для розкладу (CIST NURE)</h2>
 
-    <p class="hint">
-      Ця кнопка — це bookmarklet. Він підсвічує всі комірки таблиці, де є “ВР Лб”
-      (наприклад <code>*ВР Лб DL</code>). Повторний клік вимикає підсвітку (toggle).
-    </p>
+      <p class="p">
+        Створити bookmarklet для стилізації сторінки з розкладом з сайту
+        <a href="https://cist.nure.ua" target="_blank" rel="noreferrer noopener">https://cist.nure.ua</a>
+        для своєї групи. Виклик bookmarklet повинен приводити до зміни кольорового оформлення
+        комірок, які містять рядок <code>ВР Лб</code>.
+      </p>
 
-    <ol class="steps">
-      <li>Увімкни панель закладок: <b>View → Always Show Bookmarks Bar</b> (Chrome).</li>
-      <li>Перетягни кнопку <b>“Підсвітити “ВР Лб”</b> у Bookmarks Bar.</li>
-      <li>Відкрий сторінку розкладу CIST.</li>
-      <li>Клікни по закладці — комірки з “ВР Лб” підсвітяться.</li>
-      <li>Клікни ще раз — підсвітка зникне.</li>
-    </ol>
+      <p class="p muted">
+        Посилання на розклад групи (приклад):
+        <a href="https://cist.nure.ua/ias/app/tt/f?p=778:201:4448122233390021:::201:P201_FIRST_DATE,P201_LAST_DATE,P201_GROUP,P201_POTOK:01.09.2025,31.01.2026,11412381,0:"
+           target="_blank" rel="noreferrer noopener">
+          відкрити розклад
+        </a>
+      </p>
 
-    <p class="hint">
-      Якщо браузер не дає перетягнути: клікни правою кнопкою на Bookmarks Bar → “Add page…”
-      і встав URL вручну (він починається з <code>javascript:</code>).
-    </p>
+      <div class="row">
+        <span class="pill">Дія: підсвітити “ВР Лб”</span>
+        <span class="pill">Повторний клік: прибрати (toggle)</span>
+        <span class="pill">Працює з iframe (якщо доступні)</span>
+      </div>
+
+      <ol>
+        <li>Увімкни панель закладок (Bookmarks Bar) у браузері.</li>
+        <li>Перетягни кнопку нижче на панель закладок.</li>
+        <li>Відкрий сторінку розкладу.</li>
+        <li>Натисни закладку — комірки з <code>ВР Лб</code> підсвітяться.</li>
+      </ol>
+
+      <a class="btn" href='javascript:(()=>{const STYLE_ID="cist-vr-lb-style";const CLASS_NAME="cist-vr-lb-highlight";const rx=/ВР\s*Лб/i;const normalize=s=>(s||"").replace(/\u00A0/g," ").replace(/\s+/g," ").trim();const removeAll=doc=>{const st=doc.getElementById(STYLE_ID);if(st)st.remove();doc.querySelectorAll("td."+CLASS_NAME+",th."+CLASS_NAME).forEach(el=>el.classList.remove(CLASS_NAME));};const apply=doc=>{if(!doc||!doc.querySelectorAll)return 0;let count=0;let st=doc.getElementById(STYLE_ID);if(!st){st=doc.createElement("style");st.id=STYLE_ID;st.textContent=`td.${CLASS_NAME},th.${CLASS_NAME}{background:#ffe08a!important;outline:2px solid #ff7a00!important;font-weight:800!important;}td.${CLASS_NAME} *,th.${CLASS_NAME} *{font-weight:800!important;}`;doc.head&&doc.head.appendChild(st);}doc.querySelectorAll("td,th").forEach(cell=>{const t=normalize(cell.textContent);if(rx.test(t)){cell.classList.add(CLASS_NAME);count++;}});return count;};let anyStyle=false;try{anyStyle=!!document.getElementById(STYLE_ID);}catch(e){}const docs=[];try{docs.push(document);}catch(e){}try{for(const f of window.frames){try{if(f.document)docs.push(f.document);}catch(e){}}}catch(e){}if(anyStyle){docs.forEach(d=>{try{removeAll(d);}catch(e){}});alert("Підсвітку вимкнено (toggle OFF).");return;}let total=0;docs.forEach(d=>{try{total+=apply(d);}catch(e){}});alert("Готово. Знайдено комірок з \\"ВР Лб\\": "+total+".\\nПовторний клік прибере підсвітку.");})();'>
+        Підсвітити “ВР Лб”
+      </a>
+
+      <div class="small">
+        Якщо браузер не дає перетягнути кнопку: створи закладку вручну і встав у поле URL код,
+        який починається з <code>javascript:</code>.
+      </div>
+    </div>
   </div>
 </body>
 </html>
